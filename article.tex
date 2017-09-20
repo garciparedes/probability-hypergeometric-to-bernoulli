@@ -20,19 +20,45 @@
   \label{sec:description}
 
     \paragraph{}
-    [TODO ]
+    La distribución hipergeométrica $X \sim H(n, N, D)$ se corresponde con una distribución de probabilidad para variables aleatorias discretas. Esta modeliza la situación de obtener $k$ casos favorables, de $n$ observaciones, sobre una población de $N$ individuos, donde $D$ representan la situación de éxito y $N-D$ la de fracaso. Por tanto, modeliza la misma situación que la distribución binomial, solo que en este caso se presupone que cada observación se realiza \textbf{sin reemplazamiento}, mientras que en la distribución binomial se asume reemplazamiento.
+
+    \paragraph{}
+    En las siguientes secciones se demuestra que una distribución hipergeométrica $X \sim H(n, N, D)$ es equivalente a la suma de $n$ distribuciones de bernoulli dependientes entre sí. Por tanto, $X = X_1 + ... + X_i + ... + X_n$ donde $X_i \sim B(\frac{D}{N})$ representa la $i$-ésima observación.
 
   \section{Demostración para $n=2$}
   \label{sec:demostration_1}
 
     \paragraph{}
-    [TODO ]
+    A continuación se demuestra el caso para dos variables:
+
+    \begin{align}
+      X   &\sim H(2, N, D)    &             &\\
+      X   &= X_1 + X_2        &             &\\
+      X_1 &\sim B(\frac{D}{N})& P[X_1 = 1]  &= \frac{D}{N}\\
+      X_2 &\sim B(\frac{D}{N})& P[X_2 = 1]  &= P[X_2 = 1 \land X_1 = 0] + P[X_2 = 1 \land X_1 = 1] \\
+          &                   &             &= P[X_2 = 1 \mid X_1 = 0]*P[X_1 = 0] + P[X_2 = 1 \mid X_1 = 1]*P[X_1 = 1] \\
+          &                   &             &= \frac{D}{N-1}*(1-\frac{D}{N}) + \frac{D-1}{N-1}*\frac{D}{N} \\
+          &                   &             &= \frac{D}{N}
+    \end{align}
 
   \section{Demostración para $n=3$}
   \label{sec:demostration_1}
 
-    \paragraph{}
-    [TODO ]
+  \paragraph{}
+  A continuación se demuestra el caso para dos variables:
+
+  \begin{align}
+    X   &\sim H(3, N, D)    &             &\\
+    X   &= X_1 + X_2 + X_3  &             &\\
+    X_1 &\sim B(\frac{D}{N})& P[X_1 = 1]  &= \frac{D}{N}\\
+    X_2 &\sim B(\frac{D}{N})& P[X_2 = 1]  &= P[X_2 = 1 \land X_1 = 0] + P[X_2 = 1 \land X_1 = 1] \\
+        &                   &             &= P[X_2 = 1 \mid X_1 = 0]*P[X_1 = 0] + P[X_2 = 1 \mid X_1 = 1]*P[X_1 = 1] \\
+        &                   &             &= \frac{D}{N-1}*(1-\frac{D}{N}) + \frac{D-1}{N-1}*\frac{D}{N} \\
+        &                   &             &= \frac{D}{N} \\
+    X_3 &\sim B(\frac{D}{N})& P[X_3 = 1]  &= ... \\
+        &                   &             &= ... \\
+        &                   &             &= \frac{D}{N} \\
+  \end{align}
 
   \section{Demostración caso general}
   \label{sec:demostration_1}
