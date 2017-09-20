@@ -32,44 +32,60 @@
     A continuación se demuestra el caso para dos variables:
 
     \begin{align}
-      X   &\sim H(2, N, D)    &             &\\
-      X   &= X_1 + X_2        &             &\\
-      X_1 &\sim B(\frac{D}{N})& P[X_1 = 1]  &= \frac{D}{N}\\
-      X_2 &\sim B(\frac{D}{N})& P[X_2 = 1]  &= P[X_2 = 1 \land X_1 = 0] + P[X_2 = 1 \land X_1 = 1] \\
-          &                   &             &= P[X_2 = 1 \mid X_1 = 0]*P[X_1 = 0] + P[X_2 = 1 \mid X_1 = 1]*P[X_1 = 1] \\
-          &                   &             &= \frac{D}{N-1}*(1-\frac{D}{N}) + \frac{D-1}{N-1}*\frac{D}{N} \\
-          &                   &             &= \frac{D}{N}
+      X   &\sim H(2, N, D) \\
+      X   &= X_1 + X_2 \\
+      X_1 &\sim B(\frac{D}{N}) & X_2 &\sim B(\frac{D}{N})
     \end{align}
 
+    \begin{align}
+      P[X_1 = 1]  &= \frac{D}{N}\\
+      P[X_2 = 1]  &= P[X_2 = 1 , X_1 = 0] + P[X_2 = 1 , X_1 = 1] \\
+                  &= P[X_2 = 1 \mid X_1 = 0]*P[X_1 = 0] + P[X_2 = 1 \mid X_1 = 1]*P[X_1 = 1] \\
+                  &= ... \\
+                  &= \frac{D}{N-1}*(1-\frac{D}{N}) + \frac{D-1}{N-1}*\frac{D}{N} \\
+                  &= \frac{D}{N}
+    \end{align}
+
+  \clearpage
   \section{Demostración para $n=3$}
   \label{sec:demostration_1}
 
   \paragraph{}
-  A continuación se demuestra el caso para dos variables:
+  A continuación se demuestra el caso para tres variables (nótese caso de que ya haya ocurrido un éxito puede ser tratado de la misma manera sin importar si el éxito se ha dado en $X_1$ o en $X_2$):
 
   \begin{align}
-    X   &\sim H(3, N, D)    &             &\\
-    X   &= X_1 + X_2 + X_3  &             &\\
-    X_1 &\sim B(\frac{D}{N})& P[X_1 = 1]  &= \frac{D}{N}\\
-    X_2 &\sim B(\frac{D}{N})& P[X_2 = 1]  &= P[X_2 = 1 \land X_1 = 0] + P[X_2 = 1 \land X_1 = 1] \\
-        &                   &             &= P[X_2 = 1 \mid X_1 = 0]*P[X_1 = 0] + P[X_2 = 1 \mid X_1 = 1]*P[X_1 = 1] \\
-        &                   &             &= \frac{D}{N-1}*(1-\frac{D}{N}) + \frac{D-1}{N-1}*\frac{D}{N} \\
-        &                   &             &= \frac{D}{N} \\
-    X_3 &\sim B(\frac{D}{N})& P[X_3 = 1]  &= ... \\
-        &                   &             &= ... \\
-        &                   &             &= \frac{D}{N} \\
+    X   &\sim H(3, N, D)   \\
+    X   &= X_1 + X_2 + X_3 \\
+    X_1 &\sim B(\frac{D}{N}) & X_2 &\sim B(\frac{D}{N}) & X_3 &\sim B(\frac{D}{N})\\
   \end{align}
 
-  \section{Demostración caso general}
-  \label{sec:demostration_1}
-
-    \paragraph{}
-    [TODO ]
+  \begin{align}
+    P[X_1 = 1]  &= \frac{D}{N}\\
+    P[X_2 = 1]  &= P[X_2 = 1 , X_1 = 0] + P[X_2 = 1 , X_1 = 1] \\
+                &= P[X_2 = 1 \mid X_1 = 0]*P[X_1 = 0] + P[X_2 = 1 \mid X_1 = 1]*P[X_1 = 1] \\
+                &= \frac{D}{N-1}*(1-\frac{D}{N}) + \frac{D-1}{N-1}*\frac{D}{N} \\
+                &= \frac{D}{N} \\
+    P[X_3 = 1]  &= P[X_3 = 1 , X_2 = 0 , X_1 = 0 ] + P[X_3 = 1 , X_2 = 0 , X_1 = 1 ] \\
+                & \quad + P[X_3 = 1 , X_2 = 1 , X_1 = 0 ] + P[X_3 = 1 , X_2 = 1 , X_1 = 1 ] \\
+                &= P[X_3 = 1 \mid  X_2 = 0, X_1 = 0]*P[X_2 = 0,X_1 = 0] \\
+                & \quad + P[X_3 = 1 \mid  X_2 = 0, X_1 = 1]*P[X_2 = 0,X_1 = 1] \\
+                & \quad + P[X_3 = 1 \mid  X_2 = 1, X_1 = 0]*P[X_2 = 1,X_1 = 0] \\
+                & \quad + P[X_3 = 1 \mid  X_2 = 1, X_1 = 1]*P[X_2 = 1,X_1 = 1] \\
+                &= P[X_3 = 1 \mid  X_2 = 0, X_1 = 0]*P[X_2 = 0 \mid X_1 = 0] * P[X_1 = 0]\\
+                & \quad + P[X_3 = 1 \mid  X_2 = 0, X_1 = 1]*P[X_2 = 0 \mid X_1 = 1] * P[X_1 = 1] \\
+                & \quad + P[X_3 = 1 \mid  X_2 = 1, X_1 = 0]*P[X_2 = 1 \mid X_1 = 0] * P[X_1 = 0]\\
+                & \quad + P[X_3 = 1 \mid  X_2 = 1, X_1 = 1]*P[X_2 = 1 \mid X_1 = 1] * P[X_1 = 1]\\
+                &= \frac{D}{N-2}*(1-\frac{D}{N-1}) * (1-\frac{D}{N})\\
+                & \quad + 2*\frac{D-1}{N-2}*\frac{D}{N-1} * (1-\frac{D}{N})\\
+                & \quad + \frac{D-2}{N-2}*\frac{D-1}{N-1} * \frac{D}{N}\\
+                &= ... \\
+                &= \frac{D}{N}
+  \end{align}
 
 %-----------------------------
 %	Bibliographic references
 %-----------------------------
-	\nocite{muest2017}
+	\nocite{prob2017}
 
   \bibliographystyle{alpha}
   \bibliography{bib}
